@@ -1,3 +1,4 @@
+--funcao de ackermann
 a :: Int->Int->Int
 a m n
         |m == 0 = n + 1
@@ -6,6 +7,7 @@ a m n
 
 
 
+-- lista odernada de elementes exclusivos de duas listas distintas
 exclusivo :: [Int]->[Int]->[Int]
 exclusivo x y = exclusivoAux (qsort x) (qsort y)
 
@@ -25,11 +27,13 @@ exclusivoAux [] [] = []
 exclusivoAux [] (h2:t2) = [h2] ++ exclusivo [] t2
 exclusivoAux (h1:t1) [] = [h1] ++ exclusivo t1 []
 
+--nsimo elemento de uma lista de inteiros
 nEsimo :: Int->[Int]->Int
 nEsimo x (cab:cauda)
                     |x > 1 = nEsimo (x-1) cauda
                     |otherwise = cab
 
+-- insere um elemento na nsima posição
 inserePosicao :: Int->[Int]->Int->[Int]
 inserePosicao e (cab:cauda) p
                     |p > 1 = [cab] ++ inserePosicao e cauda (p-1)
@@ -37,6 +41,7 @@ inserePosicao e (cab:cauda) p
                     |p == 0 = [cab] ++ inserePosicao e cauda p
 inserePosicao e [] 0 = []
 
+--troca um caractere de posição
 trocaCaracter :: Char->Char->[Char]->[Char]
 trocaCaracter a x (cab:cauda)
                               |cab == a = [x] ++ trocaCaracter a x cauda
@@ -56,6 +61,7 @@ palindromoAux (h1:t1) (h2:t2)
                             |otherwise = False
 palindromoAux [] [] = True
 
+--verifica se um numero é primo
 primo :: Int->Bool
 primo x  = primoaux x 2
 
@@ -89,6 +95,7 @@ finaisAux :: [Int]->Int->[Int]
 finaisAux (cab:cauda) y
                         |y >= 1 = [cab] ++ finaisAux cauda (y-1)
                         |otherwise = []
+--sequencia de fibonacci
 nEsimoFibo :: Int->Int
 nEsimoFibo x = nEsimoFibo' x 0 1
     where
@@ -96,6 +103,7 @@ nEsimoFibo x = nEsimoFibo' x 0 1
         |x == 1 = a2
         |x > 1 = nEsimoFibo' (x-1) a2 (a1+a2)
 
+-- soma de dois numeros naturais com e sem cauda
 somaNat :: Int->Int->Int
 somaNat x y
     |y == 0 = x
